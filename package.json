@@ -1,0 +1,24 @@
+{
+  "name": "anedot-scraper",
+  "version": "1.0.0",
+  "description": "Scrapes email list data from donations on Anedot's website.",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reedkellen/anedot-scraper.git"
+  },
+  "author": "Kellen Reed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reedkellen/anedot-scraper/issues"
+  },
+  "homepage": "https://github.com/reedkellen/anedot-scraper#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "jsonexport": "^2.2.1"
+  }
+}
