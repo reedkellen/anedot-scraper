@@ -1,3 +1,9 @@
+//This app requires an additional file named 'config.js' saved in the same location.
+//The accompanying config.js needs to have the following exports:
+  //User Email - userEmail
+  //API Key - apiKey
+  //Campain ID - campaignID
+
 //NPM MODULES
 //Require the fs module
 const fs = require('fs');
@@ -14,7 +20,7 @@ const filePathName = 'data/' + getCurrentDate() + '.csv';
 //Check for a directory called 'data' and save to variable
 const dataDirectory = fs.existsSync('./data');
 
-//REQUIRED data
+//REQUIRED DATA
 //Import the private data needed to access the API
 const config = require('./config.js');
 
@@ -45,11 +51,11 @@ function getCurrentDate() {
 //SCRAPER SET UP
 //If data exists, do nothing.  Else, create it.
 if (dataDirectory) {
-  console.log('"data" directory exists, Continuing...');
+  console.log('The "data" directory exists, continuing...');
 } else {
   //Make the directory
   fs.mkdirSync('./data');
-
+  console.log('Had to create the "data" directory, continuing...');
   //Save the error to the log file.
   let dataDirectoryError = getCurrentTime() + ' - "data" directory did not exist.  Created directory.\n';
   fs.appendFileSync(errorFilePath, dataDirectoryError);
@@ -82,7 +88,7 @@ axios.get(`https://${config.userEmail}:${config.apiKey}@api.anedot.com/v2/campai
       modifiedDonorData.push(modifiedDonorObject);
     };
 
-    //Use jsonexport to turn the shirtsArray into a CSV file.
+    //Use jsonexport to turn the donor data into a CSV file.
     jsonexport(modifiedDonorData, function(err, csv){
       if (err) {
         let jsonExportError = getCurrentTime() + ' - Trouble using jsonexport.  Received this message -> ' + err.message + '\n';
